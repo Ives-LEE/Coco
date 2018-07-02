@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/colorGray"
+    android:descendantFocusability="blocksDescendants"
+    android:padding="1dp"
+    android:stretchColumns="*">
+
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="1dp"
+        android:background="@color/colorGray">
+
+        <Button
+            android:id="@+id/btnOne"
+            style="@style/numberKeyboard"
+            android:layout_marginEnd="1dp"
+            android:text="1" />
+
+        <Button
+            android:id="@+id/btnTwo"
+            style="@style/numberKeyboard"
+            android:layout_marginEnd="1dp"
+            android:text="2" />
+
+        <Button
+            android:id="@+id/btnThree"
+            style="@style/numberKeyboard"
+            android:text="3" />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorGray"
+        android:paddingBottom="1dp">
+
+        <Button
+            android:id="@+id/btnFour"
+            style="@style/numberKeyboard"
+            android:layout_marginEnd="1dp"
+            android:text="4" />
+
+        <Button
+            android:id="@+id/btnFive"
+            style="@style/numberKeyboard"
+            android:layout_marginEnd="1dp"
+            android:text="5" />
+
+        <Button
+            android:id="@+id/btnSix"
+            style="@style/numberKeyboard"
+            android:text="6" />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorGray"
+        android:paddingBottom="1dp">
+
+        <Button
+            android:id="@+id/btnSeven"
+            style="@style/numberKeyboard"
+            android:layout_marginEnd="1dp"
+            android:text="7" />
+
+        <Button
+            android:id="@+id/btnEight"
+            style="@style/numberKeyboard"
+            android:layout_marginEnd="1dp"
+            android:text="8" />
+
+        <Button
+            android:id="@+id/btnNine"
+            style="@style/numberKeyboard"
+            android:text="9" />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorGray">
+
+        <ImageButton
+            android:id="@+id/ibBackspace"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="1dp"
+            android:background="@color/colorWhite"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:src="@drawable/ic_backspace_black_24dp"
+            android:tint="@color/colorPrimary" />
+
+        <Button
+            android:id="@+id/btnZero"
+            style="@style/numberKeyboard"
+            android:layout_marginEnd="1dp"
+            android:text="0" />
+
+        <Button
+            android:id="@+id/btnCalculation"
+            style="@style/numberKeyboard"
+            android:text="@string/calculation" />
+
+    </TableRow>
+
+
+</TableLayout>

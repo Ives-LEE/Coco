@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rlDatePicker"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <DatePicker
+        android:id="@+id/dpDatePicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/btnBackTodayCalendar"
+        style="@style/Base.Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dpDatePicker"
+        android:layout_toStartOf="@+id/btnCloseCalendar"
+        android:text="@string/today"
+        android:textSize="14sp" />
+
+    <Button
+        android:id="@+id/btnCloseCalendar"
+        style="@style/Base.Widget.AppCompat.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/dpDatePicker"
+        android:layout_below="@+id/dpDatePicker"
+        android:text="@string/close"
+        android:textSize="14sp" />
+
+
+</RelativeLayout>

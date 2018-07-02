@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tbCalculation"
+        style="@style/costomToolBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:id="@+id/ibLeftCalculation"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_close_black_24dp"
+                android:tint="@color/colorWhite" />
+
+            <TextView
+                android:id="@+id/tvCalculationTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/ibLeftCalculation"
+                android:text="@string/calculationSpend"
+                android:textColor="@color/colorWhite" />
+
+            <ImageButton
+                android:id="@+id/ibRightCalculation"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_check_black_24dp"
+                android:tint="@color/colorWhite" />
+
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.Toolbar>
+
+
+    <ScrollView
+        android:id="@+id/svCalculationArea"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/tlCalculation"
+        android:layout_below="@+id/tbCalculation"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/tvCalculationAreaText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="textEnd"
+            android:textSize="28sp" />
+
+    </ScrollView>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvCalculationArea"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/tlCalculation"
+        android:layout_below="@+id/tbCalculation"
+        android:visibility="gone" />
+
+
+    <TableLayout
+        android:id="@+id/tlCalculation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorGray"
+        android:stretchColumns="*">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="1dp"
+            android:layout_marginTop="1dp"
+            android:background="@color/colorGray">
+
+            <Button
+                android:id="@+id/btnCalculationType"
+                style="@style/calculationButton"
+                android:layout_marginEnd="1dp"
+                android:focusable="false" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/colorWhite" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="1dp"
+                android:background="@color/colorWhite" />
+
+            <ImageButton
+                android:id="@+id/ibBackspaceCalculation"
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:background="@color/colorWhite"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:src="@drawable/ic_backspace_black_24dp"
+                android:tint="@color/colorPrimary" />
+
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="1dp"
+            android:background="@color/colorGray">
+
+            <Button
+                android:id="@+id/btnOneCalculation"
+                style="@style/calculationButton"
+                android:layout_marginEnd="1dp"
+                android:text="@string/one" />
+
+            <Button
+                android:id="@+id/btnTwoCalculation"
+                style="@style/calculationButton"
+                android:layout_marginEnd="1dp"
+                android:text="@string/two" />
+
+            <Button
+                android:id="@+id/btnThreeCalculation"
+                style="@style/calculationButton"
+                android:layout_marginEnd="1dp"
+                android:text="@string/three" />
+
+            <Button
+                android:id="@+id/btnAddationCalculation"
+                style="@style/calculationButton"
+                android:text="@string/addition" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="1dp"
+            android:background="@color/colorGray">
+
+            <Button
+                android:id="@+id/btnFourCalculation"
+                style="@style/calculationButton"
+                android:layout_marginEnd="1dp"
+                android:text="@string/four" />
+
+            <Button
+                android:id="@+id/btnFiveCalculation"
+                style="@style/calculationButton"
+                android:layout_marginEnd="1dp"
+                android:text="@string/five" />
+
+            <Button
+                android:id="@+id/btnSixCalculation"
+                style="@style/calculationButton"
+                android:layout_marginEnd="1dp"
+                android:text="@string/six" />
+
+            <Button
+                android:id="@+id/btnSubCalculation"
+                style="@style/calculationButton"
+                android:text="@string/substraction" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="1dp"
+            android:background="@color/colorGray">
+
+            <Button
+                android:id="@+id/btnSevenCalculation"
+                style="@style/calculationButton"
+                android:layout_marginEnd="1dp"
+                android:text="@string/seven" />
+
+            <Button
+                android:id="@+id/btnEightCalculation"
+                style="@style/calculationButton"
+                android:layout_marginEnd="1dp"
+                android:text="@string/eight" />
+
+            <Button
+                android:id="@+id/btnNineCalculation"
+                style="@style/calculationButton"
+                android:layout_marginEnd="1dp"
+                android:text="@string/nine" />
+
+            <Button
+                android:id="@+id/btnTimesCalculation"
+                style="@style/calculationButton"
+                android:text="@string/times" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="1dp"
+            android:background="@color/colorGray">
+
+            <Button
+                android:id="@+id/btnCleanCalculation"
+                style="@style/calculationButton"
+                android:layout_marginEnd="1dp"
+                android:text="@string/clean" />
+
+            <Button
+                android:id="@+id/btnZeroCalculation"
+                style="@style/calculationButton"
+                android:layout_marginEnd="1dp"
+                android:text="@string/zero" />
+
+            <Button
+                android:id="@+id/btnEqualCalculation"
+                style="@style/calculationButton"
+                android:layout_marginEnd="1dp"
+                android:text="@string/equal" />
+
+            <Button
+                android:id="@+id/btnDivCalculation"
+                style="@style/calculationButton"
+                android:text="@string/division" />
+        </TableRow>
+
+    </TableLayout>
+
+
+</RelativeLayout>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="1dp"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/ivColorDailog"
+        style="@style/Base.Widget.AppCompat.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="16dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/ic_lens_black_24dp" />
+
+    <EditText
+        android:id="@+id/etTypeNameDailog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@id/ivColorDailog"
+        android:hint="@string/itemName"
+        android:inputType="text" />
+
+    <TextView
+        android:id="@+id/tvRed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivColorDailog"
+        android:layout_marginBottom="16dp"
+        android:text="@string/red"
+        android:textSize="16sp" />
+
+    <SeekBar
+        android:id="@+id/sbRed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivColorDailog"
+        android:layout_toEndOf="@+id/tvRed"
+        android:layout_toStartOf="@+id/tvRedValue"
+        android:max="255" />
+
+    <TextView
+        android:id="@+id/tvRedValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/ivColorDailog"
+        android:text="0"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tvGreen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvRed"
+        android:layout_marginBottom="16dp"
+        android:text="@string/green"
+        android:textSize="16sp" />
+
+    <SeekBar
+        android:id="@+id/sbGreen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvRed"
+        android:layout_toEndOf="@+id/tvGreen"
+        android:layout_toStartOf="@+id/tvGreenValue"
+        android:max="255" />
+
+    <TextView
+        android:id="@+id/tvGreenValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/tvRed"
+        android:text="0"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tvBlue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvGreen"
+        android:text="@string/blue"
+        android:textSize="16sp" />
+
+    <SeekBar
+        android:id="@+id/sbBlue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvGreen"
+        android:layout_toEndOf="@+id/tvBlue"
+        android:layout_toStartOf="@+id/tvBlueValue"
+        android:max="255" />
+
+    <TextView
+        android:id="@+id/tvBlueValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/tvGreen"
+        android:text="0"
+        android:textSize="16sp" />
+
+
+</RelativeLayout>

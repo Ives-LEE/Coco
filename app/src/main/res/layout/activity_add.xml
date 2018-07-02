@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tbAdd"
+        style="@style/costomToolBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:id="@+id/ibLeftAdd"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_arrow_back_black_24dp"
+                android:tint="@color/colorWhite" />
+
+            <TextView
+                android:id="@+id/tvAddTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/ibLeftAdd"
+                android:text="@string/addRecording"
+                android:textColor="@color/colorWhite" />
+
+            <Button
+                android:id="@+id/btnRightAdd"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:text="@string/calculation"
+                android:textColor="@color/colorWhite"/>
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.Toolbar>
+
+    <TableLayout
+        android:stretchColumns="*"
+        android:id="@+id/tlAdd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tbAdd"
+        android:background="@color/colorWhite"
+        android:elevation="1dp"
+        android:gravity="top"
+        android:padding="10dp">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingBottom="1dp">
+
+
+            <TextView
+                android:id="@+id/tvDateAdd"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:background="@color/colorWhite"
+                android:text="@string/dateTime"
+                android:gravity="center"
+                android:paddingEnd="1dp"/>
+
+            <EditText
+                android:id="@+id/etDateAdd"
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:focusable="false"
+                android:textAlignment="center" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingBottom="1dp">
+
+            <TextView
+                android:id="@+id/tvItemTypeAdd"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:text="@string/itemType"
+                android:gravity="center"
+                android:paddingEnd="1dp"/>
+
+            <Button
+                android:id="@+id/btnItemTypeAdd"
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:drawableLeft="@drawable/ic_lens_black_24dp"
+                android:drawableTint="@color/colorGray"
+                android:text="@string/noChoose" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingBottom="1dp">
+
+
+            <TextView
+                android:id="@+id/tvSpentAdd"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:text="@string/spent"
+                android:gravity="center"
+                android:paddingEnd="1dp"/>
+
+            <EditText
+                android:id="@+id/etSpentAdd"
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textAlignment="center"
+                android:inputType="number"
+                android:cursorVisible="false"
+                android:maxLength="16"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tvItemAdd"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:text="@string/itemName"
+                android:gravity="center"
+                android:paddingEnd="1dp"/>
+
+
+            <EditText
+                android:id="@+id/etItemAdd"
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="text"
+                android:textAlignment="center"
+                android:cursorVisible="false"  />
+        </TableRow>
+    </TableLayout>
+
+    <FrameLayout
+        android:id="@+id/flNumberKeyboard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:descendantFocusability="blocksDescendants" />
+
+
+    <Button
+        android:id="@+id/btnAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tlAdd"
+        android:layout_toStartOf="@id/btnNextAdd"
+        android:backgroundTint="@color/colorGreen"
+        android:text="@string/add"
+        android:textColor="@color/colorWhite" />
+
+    <Button
+        android:id="@+id/btnNextAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/tlAdd"
+        android:backgroundTint="@color/colorGray"
+        android:text="@string/nextItem"
+        android:textColor="@color/colorWhite" />
+
+
+</RelativeLayout>
