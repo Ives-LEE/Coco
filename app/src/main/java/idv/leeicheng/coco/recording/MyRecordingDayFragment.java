@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
@@ -43,15 +44,13 @@ import static idv.leeicheng.coco.main.ModeControl.setIsInputSpent;
 import static idv.leeicheng.coco.main.ModeControl.showAndHideNumberKeyboard;
 
 public class MyRecordingDayFragment extends Fragment {
-    public static EditText etInputCost;
-    ImageButton ibColorInputCard, ibAddInputCard;
     AlertDialog colorDialog;
-    TextView tvInputItem, tvTotal, tvNoRecording;
+    TextView tvTotal, tvNoRecording;
     ItemSQLiteOpenHelper itemSQLiteOpenHelper;
     RecyclerView rvMyRecording;
-    CardView cvInputMyRecording;
     RecordingItemAdapter recordingItemAdapter;
     List<ListItem> toDayItems;
+    FloatingActionButton fabAdd;
 
     ItemType selectType;
     long allSpend;
@@ -98,9 +97,6 @@ public class MyRecordingDayFragment extends Fragment {
             setIsEdit(false);
         }
         if (getIsInputSpent()) setIsInputSpent(false);
-        tvInputItem.setText(R.string.itemType);
-        etInputCost.setHint(R.string.paid);
-        ibColorInputCard.setColorFilter(getResources().getColor(R.color.colorGray), android.graphics.PorterDuff.Mode.SRC_IN);
         setAdatper();
     }
 
@@ -126,137 +122,27 @@ public class MyRecordingDayFragment extends Fragment {
     }
 
     private void findViews(View view) {
-        ibAddInputCard = view.findViewById(R.id.ibAddInputCard);
-        tvInputItem = view.findViewById(R.id.tvInputItem);
+        fabAdd = view.findViewById(R.id.fabAdd);
         tvNoRecording = view.findViewById(R.id.tvNoRecording);
-        etInputCost = view.findViewById(R.id.etInputCost);
         rvMyRecording = view.findViewById(R.id.rvMyRecording);
-        ibColorInputCard = view.findViewById(R.id.ibColorInputCard);
         tvTotal = view.findViewById(R.id.tvTotal);
-        cvInputMyRecording = view.findViewById(R.id.cvInputMyRecording);
         viewsControl();
 
     }
 
     private void viewsControl() {
-        tvInputItem.setText(R.string.itemType);
-        etInputCost.setHint(R.string.paid);
-
-        etInputCost.setOnClickListener(new View.OnClickListener() {
+        fabAdd.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                showAndHideNumberKeyboard(getChildFragmentManager(),etInputCost);
-            }
-        });
-
-
-        ibAddInputCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                allSpend = 0;
-                hideNumberKeyboard(getChildFragmentManager());
-                if (selectType != null) {
-                    String date = getFormatDay();
-                    String itemName = "";
-                    String cost = etInputCost.getText().toString().trim();
-                    long spent = 0;
-                    if (!cost.equals("")) {
-                        spent = Long.valueOf(cost);
-                    }
-                    itemSQLiteOpenHelper.insertRecording(new RecordingItem(date, selectType.getName(), spent, itemName));
-                    setAdatper();
-                    ibColorInputCard.setColorFilter(getResources().getColor(R.color.colorGray), PorterDuff.Mode.SRC_IN);
-                    selectType = null;
-                    tvInputItem.setText(R.string.itemType);
-                    etInputCost.setText(null);
-                }
-            }
-        });
-
-        ibAddInputCard.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
+            public void onClick(View v) {
                 Intent intent = new Intent(getActivity().getApplicationContext(), AddItemActivity.class);
                 startActivity(intent);
-                return false;
             }
         });
-
-        View.OnClickListener showTypeDialog = new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                hideNumberKeyboard(getChildFragmentManager());
-                AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getActivity());
-                View dialogView = getLayoutInflater().inflate(R.layout.choose_color_dialog, null);
-                RecyclerView rvColorDialog = dialogView.findViewById(R.id.rvColorDialog);
-                List<ItemType> types = getTypes();
-                rvColorDialog.setLayoutManager(new GridLayoutManager(getActivity(), 4, GridLayoutManager.VERTICAL, false));
-                rvColorDialog.setAdapter(new ColorAdapter(getActivity(), types));
-                dialogBuilder.setView(dialogView);
-                colorDialog = dialogBuilder.create();
-                colorDialog.show();
-            }
-        };
-        tvInputItem.setOnClickListener(showTypeDialog);
-        ibColorInputCard.setOnClickListener(showTypeDialog);
     }
 
     List<ListItem> getAllRecordingItem() {
         return itemSQLiteOpenHelper.getAllRecording(getFormatDay());
     }
-
-    private class ColorAdapter extends RecyclerView.Adapter<ColorAdapter.ColorViewHolder> {
-        Context context;
-        List<ItemType> types;
-
-        public ColorAdapter(Context context, List<ItemType> types) {
-            this.context = context;
-            this.types = types;
-        }
-
-        public class ColorViewHolder extends RecyclerView.ViewHolder {
-            CardView cvColor;
-            TextView tvColorItemName;
-
-            public ColorViewHolder(View view) {
-                super(view);
-                cvColor = view.findViewById(R.id.cvColor);
-                tvColorItemName = view.findViewById(R.id.tvColorItemName);
-            }
-        }
-
-        @Override
-        public ColorAdapter.ColorViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            LayoutInflater layoutInflater = getLayoutInflater();
-            View view = layoutInflater.inflate(R.layout.color_card, parent, false);
-
-            return new ColorViewHolder(view);
-        }
-
-        @Override
-        public void onBindViewHolder(ColorAdapter.ColorViewHolder holder, int position) {
-            final ItemType itemType = types.get(position);
-            final int color = Color.rgb(itemType.getRed(), itemType.getGreen(), itemType.getBlue());
-            holder.cvColor.setCardBackgroundColor(color);
-            holder.tvColorItemName.setText(itemType.getName());
-
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    selectType = itemType;
-                    ibColorInputCard.setColorFilter(color, android.graphics.PorterDuff.Mode.SRC_IN);
-                    tvInputItem.setText(itemType.getName());
-                    colorDialog.dismiss();
-                }
-            });
-        }
-
-        @Override
-        public int getItemCount() {
-            return types.size();
-        }
-    }
-
 
     private class RecordingItemAdapter extends RecyclerView.Adapter {
         Context context;
@@ -389,7 +275,7 @@ public class MyRecordingDayFragment extends Fragment {
     void editMode() {
         if (getIsEdit()) {
             deleteMode();
-            cvInputMyRecording.setVisibility(View.GONE);
+            fabAdd.setVisibility(View.GONE);
 
             View.OnClickListener clickRightListenerEditMode = new View.OnClickListener() {
                 @Override
@@ -419,7 +305,7 @@ public class MyRecordingDayFragment extends Fragment {
 
     void commonMode() {
         resetToolbar();
-        cvInputMyRecording.setVisibility(View.VISIBLE);
+        fabAdd.setVisibility(View.VISIBLE);
         MainActivity.ibTopRight.setOnClickListener(MainActivity.clickRightListener);
         MainActivity.ibTopLeft.setOnClickListener(MainActivity.clickLeftListener);
         setAdatper();

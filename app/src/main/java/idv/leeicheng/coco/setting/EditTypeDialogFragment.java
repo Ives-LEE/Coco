@@ -91,7 +91,6 @@ public class EditTypeDialogFragment extends DialogFragment {
                             ItemType itemType = new ItemType(name, red, green, blue);
                             itemSQLiteOpenHelper.insertType(itemType);
                             dialogInterface.dismiss();
-
                             typeAdapter.setTypes(getTypes());
                             typeAdapter.notifyDataSetChanged();
                         }

@@ -73,7 +73,7 @@ public class EditItemTypeActivity extends AppCompatActivity {
 
     void setAdapter() {
         List<ItemType> types = getTypes();
-        if (types.size() <= 0) return;
+        if (types.size() < 0) return;
         if (typeAdapter == null) {
             typeAdapter = new TypeAdapter(this, types);
             rvType.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
@@ -235,6 +235,7 @@ public class EditItemTypeActivity extends AppCompatActivity {
         tbEditType.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
         ibLeftType.setImageResource(R.drawable.ic_arrow_back_black_24dp);
         ibRightType.setImageResource(R.drawable.ic_add_black_24dp);
+        willDeletes.clear();
         setAdapter();
     }
 

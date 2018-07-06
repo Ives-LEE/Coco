@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <android.support.v7.widget.CardView
         android:id="@+id/cvTotalMyRecording"
@@ -48,7 +49,6 @@
         android:id="@+id/rvMyRecording"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/cvInputMyRecording"
         android:layout_below="@+id/cvTotalMyRecording" />
 
     <TextView
@@ -60,83 +60,17 @@
         android:textSize="16sp"
         android:visibility="gone" />
 
-    <FrameLayout
-        android:id="@+id/flNumberKeyboard"
-        android:layout_width="match_parent"
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabAdd"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/cvInputMyRecording"
-        android:descendantFocusability="blocksDescendants" />
-
-    <android.support.v7.widget.CardView
-        android:id="@+id/cvInputMyRecording"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true">
-
-        <RelativeLayout
-            android:id="@+id/rlInputCard"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <ImageButton
-                android:id="@+id/ibColorInputCard"
-                style="@style/Base.Widget.AppCompat.Button.Borderless"
-                android:layout_width="54dp"
-                android:layout_height="54dp"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="32dp"
-                android:adjustViewBounds="true"
-                android:src="@drawable/ic_lens_black_24dp"
-                android:tint="@color/colorGray" />
-
-            <TextView
-                android:id="@+id/tvInputItem"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="32dp"
-                android:layout_toEndOf="@id/ibColorInputCard"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/tvDollarInputCard"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="10dp"
-                android:layout_toEndOf="@id/tvInputItem"
-                android:text="$"
-                android:textSize="16sp" />
-
-
-            <EditText
-                android:id="@+id/etInputCost"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toEndOf="@id/tvDollarInputCard"
-                android:layout_toStartOf="@+id/ibAddInputCard"
-                android:focusable="false"
-                android:inputType="number"
-                android:textAlignment="center"
-                android:textSize="14sp"
-                android:maxLength="16"/>
-
-            <ImageButton
-                android:id="@+id/ibAddInputCard"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="54dp"
-                android:layout_height="54dp"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:adjustViewBounds="true"
-                android:src="@drawable/ic_add_black_24dp"
-                android:tint="@color/colorPrimary" />
-
-        </RelativeLayout>
-
-
-    </android.support.v7.widget.CardView>
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:fabSize="normal"
+        android:src="@drawable/ic_add_black_24dp"
+        android:tint="@color/colorWhite" />
 
 
 </RelativeLayout>
